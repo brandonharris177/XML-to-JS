@@ -1,3 +1,5 @@
+//this code can pull the xml code from an xml file and turn it into a JSON object
+
 // var fs = require('fs');
 // var xml2js =  require('xml2js');
 // var parser = new xml2js.Parser();
@@ -15,6 +17,8 @@ data = `<note>
 <from>Jani</from>
 <body>Don't forget me this weekend!</body>
 </note>`
+
+//this code turns a string of XML into a JSON object
 
 var xml2js =  require('xml2js');
 
