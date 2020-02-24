@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const axios = require('axios');
 
 //this code can pull the xml code from an xml file and turn it into a JSON object
 
@@ -44,26 +45,48 @@ var DOMParser = require('xmldom').DOMParser;
 // console.info(nsAttr)
 // console.info(doc)
 
-fetch('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml').then(function(resp) {
-  return resp.text();
-})
-.then(function(converter) {
-  var xml = new DOMParser().parseFromString(converter, 'text/xml');
-  return (xml.getElementsByTagName('Cube') [0]);
-})
-.then(function(data) {
-  // console.log(typeof(data))
-  xml2js.parseStringPromise(data).then(function (result) {
-    console.dir(result)
-    // console.dir(result.Currency);
-    console.log('Done');
-  })
-  .catch(function (err) {
+// fetch('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml').then(function(resp) {
+//   return resp.text();
+// })
+// .then(function(converter) {
+//   var xml = new DOMParser().parseFromString(converter, 'text/xml');
+//   return (xml.getElementsByTagName('Cube') [0]);
+// })
+// .then(function(data) {
+//   // console.log(typeof(data))
+//   xml2js.parseStringPromise(data).then(function (result) {
+//     console.dir(result)
+//     // console.dir(result.Currency);
+//     console.log('Done');
+//   })
+//   .catch(function (err) {
 
-  });
+//   });
+// })
+// .catch((err)=>{
+//   console.log(err)
+// });
+
+
+axios('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml').then(function(resp) {
+  console.log(resp)
+  return resp;
 })
-.catch((err)=>{
-  console.log(err)
-});
+// .then(function(converter) {
+//   var xml = new DOMParser().parseFromString(converter, 'text/xml');
+//   return (xml.getElementsByTagName('Cube') [0]);
+// })
+// .then(function(data) {
+//   // console.log(typeof(data))
+//   xml2js.parseStringPromise(data).then(function (result) {
+//     console.dir(result)
+//     // console.dir(result.Currency);
+//     console.log('Done');
+//   })
+//   .catch(function (err) {
 
-
+//   });
+// })
+// .catch((err)=>{
+//   console.log(err)
+// });
